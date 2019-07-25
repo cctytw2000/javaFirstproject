@@ -169,17 +169,23 @@ public class LiberoDaoJdbcImpl implements ILiberoDio {
 			state.setString(1, FirstName);
 			ResultSet rs = state.executeQuery();
 			if (rs.next()) {
-				System.out.println("請輸入您要修改的資料");
-				System.out.println("1." + "Position:" + rs.getString(2));
-				System.out.println("2." + "FirstName:" + rs.getString(3));
-				System.out.println("3." + "LastName:" + rs.getString(4));
-				System.out.println("4." + "BatHand:" + rs.getString(5));
-				System.out.println("5." + "ThrowHand:" + rs.getString(6));
-				System.out.println("6." + "Height:" + rs.getString(7));
-				System.out.println("7." + "Weight:" + rs.getString(8));
-				System.out.println("8." + "BirthDate:" + rs.getString(9));
-				System.out.println("9." + "離開");
 				ResultSetMetaData metadata = rs.getMetaData();
+//				System.out.println(metadata.getColumnCount());
+//				System.out.println(metadata.getColumnName(1));
+				for (int i = 2; i <= metadata.getColumnCount()-1; i++) {
+					System.out.println((i - 1) + "." + metadata.getColumnName(i) + ":" + rs.getString(i));
+				}
+				System.out.println("9." + "離開");
+//				System.out.println("請輸入您要修改的資料");
+//				System.out.println("1." + "Position:" + rs.getString(2));
+//				System.out.println("2." + "FirstName:" + rs.getString(3));
+//				System.out.println("3." + "LastName:" + rs.getString(4));
+//				System.out.println("4." + "BatHand:" + rs.getString(5));
+//				System.out.println("5." + "ThrowHand:" + rs.getString(6));
+//				System.out.println("6." + "Height:" + rs.getString(7));
+//				System.out.println("7." + "Weight:" + rs.getString(8));
+//				System.out.println("8." + "BirthDate:" + rs.getString(9));
+//				System.out.println("9." + "離開");
 //			int columnCount = metadata.getColumnCount();
 
 				Scanner choose_sca = new Scanner(System.in);

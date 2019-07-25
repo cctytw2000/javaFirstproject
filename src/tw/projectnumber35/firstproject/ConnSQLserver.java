@@ -45,7 +45,7 @@ public class ConnSQLserver implements DataSource {
 	}
 
 	@Override
-	public Connection getConnection() throws SQLException {
+	public synchronized Connection getConnection() throws SQLException {
 		if (connpools.isEmpty()) {
 			conn = DriverManager.getConnection(mySQLUrl, myUser, myPassword);
 			return conn;
@@ -56,7 +56,7 @@ public class ConnSQLserver implements DataSource {
 	}
 
 	@Override
-	public Connection getConnection(String myUser, String myPassword) throws SQLException {
+	public synchronized Connection getConnection(String myUser, String myPassword) throws SQLException {
 		if (connpools.isEmpty()) {
 			conn = DriverManager.getConnection(mySQLUrl, myUser, myPassword);
 			return conn;
